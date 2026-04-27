@@ -1,0 +1,9 @@
+.DS_Store
+
+.obsidian/workspace
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+.opencode/node_modules/
+
+__pycache__/
