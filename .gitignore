@@ -6,8 +6,6 @@
 .obsidian/themes/
 .obsidian/appearance.json
 .obsidian/hotkeys.json
-.obsidian/community-plugins.json
-.obsidian/core-plugins.json
 
 # 系统垃圾文件
 .DS_Store
