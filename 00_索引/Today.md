@@ -6,7 +6,8 @@
 ## 今日新建
 
 ### [[Opencode 安装]]
-- path: Opencode 安装.md
+
+- path: 20*方法论*工作流/Opencode 安装.md
 - mtime 16:43, ctime 16:00
 
 ```md
@@ -52,6 +53,7 @@
 ```
 
 ### [[AGENTS]]
+
 - path: AGENTS.md
 - mtime 16:30, ctime 16:30
 
@@ -80,19 +82,21 @@ No commits yet. Init with `git add -A && git commit -m "initial commit"` when as
 ```
 
 ### [[在Obsidian 中调用 claude 这样 AI 工具]]
-- path: 在Obsidian 中调用 claude 这样 AI 工具.md
+
+- path: 20*方法论*工作流/在Obsidian 中调用 claude 这样 AI 工具.md
 - mtime 16:00, ctime 10:42
 
 ```md
 不是"在 Obsidian 里用 AI"
 ✅ 而是"让 Obsidian 成为 Agent 系统的 UI"
 
- 但是 Claude code 需要账号，codex 也要花钱
- 所以，想到了[[OpenCode#和 codex、cc 的差异]]
+但是 Claude code 需要账号，codex 也要花钱
+所以，想到了[[OpenCode#和 codex、cc 的差异]]
 ```
 
 ### [[OpenCode]]
-- path: OpenCode.md
+
+- path: 20*方法论*工作流/OpenCode.md
 - mtime 15:54, ctime 15:45
 
 ```md
@@ -108,17 +112,18 @@ A：DeepSeek 的介绍中（https://api-docs.deepseek.com/zh-cn/guides/coding_ag
 **OpenCode（开放型 Agent OS）**
 
 CLI（OpenCode）
- ↓
+↓
 Agent Runtime（可改）
- ↓
+↓
 Model（你选：DeepSeek / GPT / Claude）
- ↓
+↓
 Tools / Skills（你定义）
 
-==Codex / Claude Code 是"别人写好的 Agent"，  OpenCode 是"让你自己写 Agent 的操作系统"。==
+==Codex / Claude Code 是"别人写好的 Agent"， OpenCode 是"让你自己写 Agent 的操作系统"。==
 ```
 
 ### [[Pinkoi]]
+
 - path: Pinkoi.md
 - mtime 11:08, ctime 10:54
 
@@ -128,7 +133,8 @@ Tools / Skills（你定义）
 ```
 
 ### [[Instapaper readwise ibooks]]
-- path: Instapaper readwise ibooks.md
+
+- path: 20*方法论*工作流/Instapaper readwise ibooks.md
 - mtime 10:52, ctime 10:16
 
 ```md
@@ -161,7 +167,8 @@ Level 1（基础）：Readwise → Obsidian 自动同步
 ```
 
 ### [[欢迎]]
-- path: 欢迎.md
+
+- path: 00\_索引/欢迎.md
 - mtime 10:15, ctime 10:15
 
 ```md
