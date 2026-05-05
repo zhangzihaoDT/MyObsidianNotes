@@ -1,4 +1,7 @@
 {
-  "cssTheme": "Minimal",
-  "theme": "system"
+  "cssTheme": "Typewriter",
+  "theme": "system",
+  "accentColor": "",
+  "textFontFamily": "Arial Hebrew",
+  "translucency": false
 }
