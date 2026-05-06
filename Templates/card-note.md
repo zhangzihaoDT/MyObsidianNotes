@@ -1,16 +1,10 @@
 ---
-due: 
-status: 
-tags: 
+created: {{date:YYYY-MM-DD HH:mm}}
 ---
-
-## 1. source
-- 
+## 1. takenotes
 
 
-## 2. takenotes
-- 
+## 2. keywords
 
 
-## 3. keywords
-- 
+## 3. source
