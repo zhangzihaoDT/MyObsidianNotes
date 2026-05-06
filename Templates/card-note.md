@@ -1,5 +1,6 @@
 ---
-created: {{date:YYYY-MM-DD HH:mm}}
+created:
+  "{ date:YYYY-MM-DD HH:mm }":
 ---
 ## 1. takenotes
 
