@@ -1,6 +1,5 @@
 ---
-created:
-  "{ date:YYYY-MM-DD HH:mm }":
+created: "[object Object]"
 ---
 ## 1. takenotes
 
