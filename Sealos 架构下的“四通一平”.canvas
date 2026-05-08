@@ -1,0 +1,12 @@
+{
+	"nodes":[
+		{"id":"e58a7a6de1f92f1c","type":"text","text":"Home Mac（Worker）\n运行：\n\n```\nfrpc（client）  \nAgent Runtime  \nDocker\n```","x":-140,"y":80,"width":340,"height":200},
+		{"id":"040334ae79913f74","type":"text","text":"Sealos（云端）\n运行：\n\n```\nfrps（server）nginxAPI gateway\n```","x":-260,"y":-220,"width":309,"height":190},
+		{"id":"62339f71b5e4c41e","type":"text","text":"公网访问：\n\n```\nhttps://agent.xxx.xxx\n```","x":-260,"y":-520,"width":309,"height":190},
+		{"id":"c8be93b271618385","x":300,"y":-220,"width":250,"height":200,"color":"2","type":"text","text":"🎯 你现在下一步最合理的是：\n1️⃣ 在 Sealos 部署 frps\n2️⃣ Home Mac 跑 frpc\n3️⃣ 把 localhost:8000 暴露到公网"}
+	],
+	"edges":[
+		{"id":"cce4a1e60504fc35","fromNode":"62339f71b5e4c41e","fromSide":"bottom","toNode":"040334ae79913f74","toSide":"top"},
+		{"id":"a15aacca4b08f143","fromNode":"040334ae79913f74","fromSide":"bottom","toNode":"e58a7a6de1f92f1c","toSide":"top"}
+	]
+}
