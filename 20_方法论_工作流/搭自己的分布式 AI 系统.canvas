@@ -1,0 +1,16 @@
+{
+	"nodes":[
+		{"id":"040334ae79913f74","type":"text","text":"**gateway**：本地服务 → 公网服务\n本质是：\n- reverse proxy\n- ingress\n- tunnel\n- edge layer\n\n你现在已经接触：\n\n- FRP\n- WireGuard\n- Sealos\nSealos（云端）\n运行：\n\n```\nfrps（server）nginxAPI gateway\n```","x":-330,"y":-220,"width":379,"height":460},
+		{"id":"62339f71b5e4c41e","type":"text","text":"公网访问：\n\n```\nhttps://agent.xxx.xxx\n```","x":-360,"y":-500,"width":309,"height":140},
+		{"id":"e58a7a6de1f92f1c","type":"text","text":"**Worker**：Home Mac\n本质上是：\n- compute node\n- execution layer\n- runtime\n\n特点：\n\n```\n持续运行稳定高算力\n```\n运行：\n\n```\nfrpc（client）  \nAgent Runtime  \nDocker\n```","x":130,"y":-220,"width":370,"height":460},
+		{"id":"c8be93b271618385","type":"text","text":"🎯 你现在下一步最合理的是：\n1️⃣ 在 Sealos 部署 frps\n2️⃣ Home Mac 跑 frpc\n3️⃣ 把 localhost:8000 暴露到公网","x":560,"y":-500,"width":250,"height":200,"color":"2"},
+		{"id":"ecad5407dfec62d0","type":"text","text":"**Space**：开发\n- IDE\n- 工作站\n- 创作空间\n- control plane（控制面）","x":130,"y":400,"width":370,"height":200},
+		{"id":"5bb5c80761d24c35","x":257,"y":280,"width":117,"height":60,"color":"1","type":"text","text":"Git SSH"}
+	],
+	"edges":[
+		{"id":"cce4a1e60504fc35","fromNode":"62339f71b5e4c41e","fromSide":"bottom","toNode":"040334ae79913f74","toSide":"top"},
+		{"id":"4345ad046bdc1595","fromNode":"040334ae79913f74","fromSide":"right","toNode":"e58a7a6de1f92f1c","toSide":"left"},
+		{"id":"5add2570707fe680","fromNode":"e58a7a6de1f92f1c","fromSide":"bottom","toNode":"ecad5407dfec62d0","toSide":"top"},
+		{"id":"ba8b70b8c6df41a5","fromNode":"ecad5407dfec62d0","fromSide":"top","toNode":"e58a7a6de1f92f1c","toSide":"bottom","fromEnd":"arrow","color":"1"}
+	]
+}
