@@ -13,7 +13,7 @@
 - Illustration：（SVG）支持做插图
 - Code：带有tags的脚本片段
 - Interaction：JavaScript + CSS 的交互
-- workflow：使用svg+html 做工作的流程示意
+- workflow：使用svg+html 做工作的流程图
 - Spatial：在 canvas 范围内的绝对坐标系空间 
 - Image：插入图片
 
