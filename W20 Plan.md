@@ -17,7 +17,11 @@
 - Spatial：在 canvas 范围内的绝对坐标系空间 
 - Image：插入图片
 
+2、视觉清晰度与阅读便利性
+3、分享便利性
+- Markdown 文件比较难分享，用 HTML 时，只要上传文件（比如上传到 S3），就能轻松分享链接。你的同事们可以随意打开并轻松查阅。
 
+**如何开始**
 
 ---
 Anthropic Claude Code 团队成员 Thariq 发表于 X
