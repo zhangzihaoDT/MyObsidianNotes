@@ -15,6 +15,7 @@ desktop.ini
 # 临时文件与日志
 *.tmp
 *.log
+.env
 
 .opencode/node_modules/
 
