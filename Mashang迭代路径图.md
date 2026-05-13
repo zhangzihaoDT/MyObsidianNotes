@@ -3,6 +3,12 @@
 v0.1：自然语言 -> SQL -> 答案
 v0.2：自然语言 -> DSL -> 答案
 v0.3：Agent Loop + Tool Router + Result Blocks
+	✅ v0.3.1 State Schema 固化  
+	✅ v0.3.2 Structured Result Block  
+	✅ v0.3.3 structured_blocks 落 state  
+	✅ v0.3.4 facts extractor 接入 structured_blocks  
+	✅ v0.3.5 runtime_decision 接入 should_continue  规则化
+	✅ v0.3.6 diagnosis 两步分析闭环
 v0.4：StatisticsTool / Operators / Fast Path 稳定化
 v0.5：Query Log -> Planner Examples 自动沉淀
 v0.6：Analysis Intent -> 多轮分析策略
