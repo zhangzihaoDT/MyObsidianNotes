@@ -1,51 +1,83 @@
-#G老师 
+#G老师 ，迭代路径图
 
-## v0.4.5 Composition / Share 能力补齐
+## v0.5 Eval-driven Stabilization
 
-v0.4 Evidence-driven Agentic BI Runtime  
-	✅ State-first  
-	✅ Structured Result Blocks  
-	✅ Fact Extraction  
-	✅ Evidence Contract  
-	✅ Runtime Decision  
-	✅ Grounded Summary  
+目标：从 10-case 手工验证升级为稳定自动回归。
+
+- 30~50 条 BI 问题评测集	
+- plan_accuracy	
+- evidence_sufficiency	
+- premature_finish_rate	
+- answer_grounded_rate
+
+建议评测层：
+
+| 评测项                   | 含义                  |
+| --------------------- | ------------------- |
+| intent_accuracy       | intent 是否识别正确       |
+| plan_accuracy         | DSL 是否正确            |
+| tool_route_accuracy   | 是否路由到正确工具           |
+| fact_recall           | required facts 是否抽出 |
+| fact_precision        | 是否过多抽出无关 facts      |
+| evidence_sufficiency  | required facts 是否满足 |
+| premature_finish_rate | 是否过早 finish         |
+| answer_grounded_rate  | 回答是否只基于 evidence    |
+
+核心目标：
+
+```
+从“能跑通”升级为“稳定不退化”
+```
+
+### v0.4.3 Deterministic Fact Builder  
+
+目标：让 required facts 尽量由代码确定性生成，而不是依赖 LLM 抽取。
   
-v0.4.5 Composition / Share 能力补齐  
-- share_by_dimension  
-- share_by_time_dimension  
-- topn_share  
-- cumulative_share  
+- ✅ _make_fact  
+- ✅ column-based summary facts  
+- ✅ block_type handlers  
+- ✅ _FALLBACK_HINTS  
+- ✅ gap-filling  
+- ✅ 10-case 回归通过  
   
-v0.5 Eval-driven Stabilization  
-- 30~50 条 BI 问题评测集  
-- plan_accuracy  
-- evidence_sufficiency  
-- premature_finish_rate  
-- answer_grounded_rate  
+已覆盖标准 fact types：  
   
-v0.6 Query Log -> DSL Prior  
-- 人工 review query log  
-- 抽象 question pattern  
-- 沉淀 planner examples  
-- 暂不自动学习  
-  
-v0.7 Multi-step Diagnosis Agent  
-- 趋势异常  
-- 贡献拆解  
-- 结构变化  
-- 自动生成诊断链路  
-  
-v0.8 Visualization & Report Blocks  
-- table block  
-- chart spec block  
-- insight block  
-- 飞书 / HTML / PPT 输出  
-  
-v1.0 Stable Agentic BI Copilot
+- metric_value  
+- time_grouped_metric  
+- trend_summary  
+- comparison_result  
+- dimension_breakdown  
+- share_summary  
+- ranking_result  
+- distribution_summary  
+- contribution_summary
+
+### v0.4.2 Evidence Contract Template Library  
+
+目标：让 Runtime 知道不同 BI 问题分别需要什么证据。
+
+- ✅ 9 类 analysis intent：metric / trend / compare / composition / share / time_grouped_share / ranking / distribution / diagnosis  
+- ✅ required_fact_types 标准化  
+- ✅ repair_query_template  
+- ✅ infer_intent_from_question 优先级重写  
+- ✅ evaluate_state_readiness 统一走 contract missing 判断  
+
+### v0.4.1 Composition / Share 能力补齐  
+
+目标：把“构成 / 占比 / 份额”从通用 QueryTool 中抽象为稳定 BI 能力。
+
+✅ CompositionTool  
+✅ share_by_dimension  
+✅ weekly_share_by_dimension  
+✅ monthly_share_by_dimension  
+✅ topn_share  
+✅ cumulative_share  
+✅ plan.analysis_intent.type == "share_breakdown" 路由
 
 ## v0.4 Evidence-driven Agentic BI Runtime
 
-目标：  
+核心目标：从 `has_result -> finish` 升级为 `has_required_evidence -> finish`。
+
 让 Agent 不再依赖 LLM 自主判断“是否查够”，而是基于结构化证据判断是否继续执行或结束回答。  
   
 核心能力：  
