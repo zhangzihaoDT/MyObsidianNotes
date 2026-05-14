@@ -1,5 +1,48 @@
 #G老师 
 
+## v0.4.5 Composition / Share 能力补齐
+
+v0.4 Evidence-driven Agentic BI Runtime  
+	✅ State-first  
+	✅ Structured Result Blocks  
+	✅ Fact Extraction  
+	✅ Evidence Contract  
+	✅ Runtime Decision  
+	✅ Grounded Summary  
+  
+v0.4.5 Composition / Share 能力补齐  
+- share_by_dimension  
+- share_by_time_dimension  
+- topn_share  
+- cumulative_share  
+  
+v0.5 Eval-driven Stabilization  
+- 30~50 条 BI 问题评测集  
+- plan_accuracy  
+- evidence_sufficiency  
+- premature_finish_rate  
+- answer_grounded_rate  
+  
+v0.6 Query Log -> DSL Prior  
+- 人工 review query log  
+- 抽象 question pattern  
+- 沉淀 planner examples  
+- 暂不自动学习  
+  
+v0.7 Multi-step Diagnosis Agent  
+- 趋势异常  
+- 贡献拆解  
+- 结构变化  
+- 自动生成诊断链路  
+  
+v0.8 Visualization & Report Blocks  
+- table block  
+- chart spec block  
+- insight block  
+- 飞书 / HTML / PPT 输出  
+  
+v1.0 Stable Agentic BI Copilot
+
 ## v0.4 Evidence-driven Agentic BI Runtime
 
 目标：  
@@ -47,7 +90,7 @@ v0.5：Planner Prior / Query Log 经验沉淀
 	⬜ Planner Prior YAML / JSONL  
 	⬜ PlanningAgent 检索相似 pattern 后再生成 DSL  
   
-v0.6：Analysis Strategy 多轮分析策略  
+v0.6：**Analysis Strategy 多轮分析策略**  
 	⬜ trend / compare / ranking / composition / diagnosis / forecast 策略注册  
 	⬜ intent -> required facts -> next action  
 	⬜ 多轮任务链条模板化  
