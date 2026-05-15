@@ -29,6 +29,23 @@
 从“能跑通”升级为“稳定不退化”
 ```
 
+### v0.4.4 MultiTable / Lookup Metric 能力补齐
+
+目标：实现订单表和选配表的打通，比如：“LS8 地暖5座6座的选装率分别是多少？（上市至今）”
+
+- 主表过滤  
+- ID 集合提取  
+- 子表 lookup  
+- merge 回主表  
+- group_by ratio
+
+典型问题（用于回测）
+
+- CM2 增程激光雷达选装率
+- CM2 激光雷达选装率
+- LS8 部分同车型的线控选装率
+- LS8 不同轮毂的选装比例
+
 ### v0.4.3 Deterministic Fact Builder  
 
 目标：让 required facts 尽量由代码确定性生成，而不是依赖 LLM 抽取。
