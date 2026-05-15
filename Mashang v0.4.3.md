@@ -41,11 +41,23 @@
 
 典型问题（用于回测）
 
-- CM2 增程激光雷达选装率
+- CM2增程 2026 年 1 月 1 日至今，Thor 的选装率
 - CM2 激光雷达选装率
 - LS8 部分同车型的线控选装率
 - LS8 不同轮毂的选装比例
 - LS9 不同车型（product_name）的轮毂占比
+
+全部通过 ✅
+#	查询	类型
+1	CM2增程 2026-01-01至今 Thor选装率	attribute_penetration
+2	CM2 激光雷达选装率	attribute_penetration
+3	LS8 部分同车型的线控选装率	attribute_penetration
+4	LS8 不同轮毂的选装比例	attribute_distribution
+5	LS9 不同车型的轮毂占比	attribute_distribution
+三个路由路径全部覆盖到：
+- attribute_penetration（二值选装率）→ Q1/Q2/Q3
+- attribute_distribution（多值分布/share）→ Q4/Q5
+- value_contains（variant 模糊匹配）→ Q1
 
 ### v0.4.3 Deterministic Fact Builder  
 
