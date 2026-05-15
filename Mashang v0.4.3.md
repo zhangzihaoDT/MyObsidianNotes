@@ -45,6 +45,7 @@
 - CM2 激光雷达选装率
 - LS8 部分同车型的线控选装率
 - LS8 不同轮毂的选装比例
+- LS9 不同车型（product_name）的轮毂占比
 
 ### v0.4.3 Deterministic Fact Builder  
 
