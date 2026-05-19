@@ -29,6 +29,21 @@
 从“能跑通”升级为“稳定不退化”
 ```
 
+### v0.4.6 — Runtime Decision / Fact Extraction 稳定化
+
+**Agent Loop 空转修复**：`memory_extractor` 三处缺陷导致 query block 始终抽不出 facts → loop 空跑 5 步
+
+- `_DATA_EXCLUDE` 误过滤 `"series"` 维度列 → `dim_cols=[]` → 无 dimension_breakdown
+
+- `tool_router.py` 默认路径调用 `execute_analysis()` 返回 string 而非 DataFrame → `cols=[]`
+
+- `share_summary` 缺少 raw count → 占比的确定性 fallback 计算
+
+### v0.4.5 — 数据集更新 Fast Path
+
+明确触发"数据更新并同步"时连续调用 `skills_order_observation_daily.py`
+否则，仅数据更新。
+
 ### v0.4.4 MultiTable / Lookup Metric 能力补齐
 
 目标：实现订单表和选配表的打通，比如：“LS8 地暖5座6座的选装率分别是多少？（上市至今）”
