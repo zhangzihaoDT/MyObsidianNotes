@@ -1,0 +1,174 @@
+{
+  "style_name": "Neo Rational Infrastructure",
+  "chinese_name": "新理性基础设施美学",
+  "version": "v3",
+  "core_definition": "一种以未来文明基础设施为对象，以科学可视化、信息设计和现代工程秩序为语言的清亮理性视觉体系。",
+  "style_formula": "Neo Modernism + Information Design + Infrastructure Sublime + Tech Optimism + Rational Romanticism",
+  "manifesto": "把复杂世界压缩成清晰的工程秩序，把未来基础设施升华成诗。",
+  "one_sentence_summary": "不是怀念旧工业时代，而是赞美未来文明正在运行的基础设施。",
+  "lineage": [
+    "Mid-Century Modern",
+    "Space Age Modernism",
+    "Japanese Technical Illustration",
+    "Swiss Information Design",
+    "Neo Modernism",
+    "Tech Optimism",
+    "Rational Romanticism"
+  ],
+  "cognitive_dna": {
+    "compression": "high",
+    "signal_to_noise": "extremely_high",
+    "system_legibility": "high",
+    "pattern_visibility": "high",
+    "storytelling": "low",
+    "emotional_expression": "restrained"
+  },
+  "visual_dna": {
+    "geometry": [
+      "球体",
+      "矩形",
+      "直线",
+      "平台",
+      "楼梯",
+      "网格",
+      "圆柱",
+      "轨道",
+      "坐标轴"
+    ],
+    "composition": [
+      "非对称平衡",
+      "大面积留白",
+      "主体孤立",
+      "低元素数量",
+      "高结构密度",
+      "图表嵌入"
+    ],
+    "perspective": "工程图式观察视角",
+    "abstraction_level": "高抽象、低叙事",
+    "information_density": "少元素、多信息",
+    "rendering": [
+      "干净边界",
+      "平涂色块",
+      "清晰层级",
+      "少灰度",
+      "透明感",
+      "现代印刷感"
+    ]
+  },
+  "color_system": {
+    "brightness": "high",
+    "saturation": "medium_plus",
+    "contrast": "clean",
+    "temperature": "cool_with_warm_accent",
+    "palette_type": "Limited Palette",
+    "ratio": {
+      "background": "70%",
+      "neutral_structure": "20%",
+      "signal_accent": "10%"
+    },
+    "main_palette": {
+      "clean_sky_blue": "#6BB6E8",
+      "warm_white": "#F8F6F0",
+      "signal_orange": "#FF7A2F",
+      "graphite": "#556270"
+    },
+    "avoid": ["脏灰", "锈色过重", "低明度复古黄", "赛博霓虹", "高饱和渐变"]
+  },
+  "material_language": {
+    "surface": [
+      "清洁混凝土",
+      "现代钢结构",
+      "白色喷涂金属",
+      "玻璃幕墙",
+      "阳极氧化铝",
+      "复合材料外壳"
+    ],
+    "aging": ["极轻微磨损", "日晒阴影", "细微划痕", "工业洁净感"],
+    "texture": "干净、透明、轻颗粒、少灰度"
+  },
+  "subjects": {
+    "primary": [
+      "雷达站",
+      "气象站",
+      "卫星地面站",
+      "风电场",
+      "数据中心",
+      "输电网络",
+      "火箭发射设施",
+      "科研基地"
+    ],
+    "secondary_life_signs": [
+      "维护工程师",
+      "研究员",
+      "气象气球",
+      "候鸟",
+      "自动驾驶车辆",
+      "观测船",
+      "轨道列车"
+    ]
+  },
+  "associated_concepts": [
+    "有效前沿",
+    "帕累托最优",
+    "技术扩散曲线",
+    "Logistic Curve",
+    "控制论",
+    "系统工程",
+    "复杂系统",
+    "信息设计",
+    "科学可视化",
+    "长期主义",
+    "未来文明",
+    "Infrastructure Sublime"
+  ],
+  "emotional_tone": [
+    "清亮",
+    "理性",
+    "乐观",
+    "未来感",
+    "探索精神",
+    "秩序感",
+    "文明正在运行"
+  ],
+  "design_principles": [
+    "结构优先于装饰",
+    "秩序优先于情绪",
+    "系统优先于故事",
+    "留白优先于填充",
+    "几何优先于写实",
+    "表达规律而非事件",
+    "用少量生命迹象避免冷硬"
+  ],
+  "why_it_resonates_with_me": [
+    "复杂系统被压缩成极简表达",
+    "更接近科学期刊的信息图与科学可视化语言",
+    "兼具工程理性与未来主义的视觉诗意",
+    "符合概率思维、系统思维与信息设计审美",
+    "体现未来基础设施的长期价值与文明秩序",
+    "与有效前沿、技术扩散曲线、Logistic Curve 等图形语言同源"
+  ],
+  "prompt_keywords": [
+    "Neo Rational Infrastructure",
+    "clean sky blue",
+    "signal orange",
+    "limited palette",
+    "scientific visualization",
+    "modern engineering facility",
+    "infrastructure sublime",
+    "minimal technical poster",
+    "high brightness",
+    "clean geometry",
+    "information design",
+    "future civilization"
+  ],
+  "negative_keywords": [
+    "nostalgic industrial retro",
+    "dirty texture",
+    "rusty heavy metal",
+    "dark cyberpunk",
+    "overly cinematic",
+    "crowded composition",
+    "decorative ornament",
+    "low brightness"
+  ]
+}

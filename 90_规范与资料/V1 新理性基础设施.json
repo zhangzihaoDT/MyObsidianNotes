@@ -1,0 +1,124 @@
+{
+  "style_name": "Neo Rational Infrastructure",
+  "chinese_name": "新理性基础设施美学",
+  "core_definition": "以现代工程设施、科学可视化语言和高明度有限配色表达未来文明秩序。",
+  "style_formula": "Neo Modernism + Infrastructure Aesthetics + Scientific Visualization + Tech Optimism",
+  "version": "v2",
+  "lineage": [
+    "Mid-Century Modern (1950-1970)",
+    "Japanese Retro (1980-2000)",
+    "Industrial Retro",
+    "Neo Modernism",
+    "Tech Optimism",
+    "Rational Romanticism v2"
+  ],
+  "visual_dna": {
+    "geometry": ["球体", "矩形", "直线", "平台", "楼梯", "网格", "圆柱"],
+    "composition": [
+      "非对称平衡",
+      "大面积留白",
+      "主体孤立",
+      "低元素数量",
+      "高结构密度"
+    ],
+    "perspective": "工程图式观察视角",
+    "abstraction_level": "高抽象、低叙事",
+    "information_density": "少元素、多信息",
+    "rendering": ["干净边界", "平涂色块", "清晰层级", "少灰度", "透明感"]
+  },
+  "color_character": {
+    "brightness": "high",
+    "saturation": "medium",
+    "contrast": "clean",
+    "temperature": "cool"
+  },
+  "color_logic": {
+    "saturation": "中等饱和",
+    "texture": "干净、透明、少灰度、现代印刷感",
+    "palette_type": "Limited Palette",
+    "structure": {
+      "background": "70%",
+      "neutral_color": "20%",
+      "accent_color": "10%"
+    },
+    "emotional_effect": "清亮而克制，理性且乐观"
+  },
+  "main_palette": {
+    "clean_sky_blue": "#6BB6E8",
+    "warm_white": "#F8F6F0",
+    "signal_orange": "#FF7A2F",
+    "graphite": "#556270"
+  },
+  "legacy_palette_v1": {
+    "dusty_sky_blue": "#77A7C4",
+    "off_white": "#F0EADF",
+    "rust_orange": "#D66B2D"
+  },
+  "material_language": {
+    "surface": [
+      "清洁混凝土",
+      "现代钢结构",
+      "白色喷涂金属",
+      "玻璃幕墙",
+      "阳极氧化铝"
+    ],
+    "aging": ["极轻微磨损", "日晒阴影", "工业洁净感"]
+  },
+  "subjects": [
+    "雷达站",
+    "气象站",
+    "卫星地面站",
+    "风电场",
+    "数据中心",
+    "输电网络",
+    "火箭发射设施",
+    "科研基地"
+  ],
+  "associated_concepts": [
+    "有效前沿",
+    "帕累托最优",
+    "技术扩散曲线",
+    "Logistic Curve",
+    "Information Design",
+    "控制论",
+    "系统工程",
+    "复杂系统",
+    "信息可视化",
+    "长期主义",
+    "未来文明"
+  ],
+  "visual_keywords": [
+    "Neo Rational Infrastructure",
+    "Neo Modernism",
+    "Tech Optimism",
+    "Scientific Visualization",
+    "Infrastructure Aesthetics",
+    "Space Age",
+    "Information Design",
+    "Systems Thinking",
+    "Modern Engineering",
+    "Future Civilization",
+    "Clean Sky Blue",
+    "Signal Orange",
+    "Limited Palette"
+  ],
+  "emotional_tone": ["清亮", "理性", "乐观", "未来感", "探索精神", "秩序感"],
+  "design_principles": [
+    "结构优先于装饰",
+    "秩序优先于情绪",
+    "系统优先于故事",
+    "留白优先于填充",
+    "几何优先于写实",
+    "表达规律而非事件"
+  ],
+  "why_it_resonates_with_me": [
+    "复杂系统被压缩成极简表达",
+    "更接近科学期刊的信息图与科学可视化语言",
+    "兼具工程理性与未来主义的视觉诗意",
+    "符合概率思维、系统思维与信息设计审美",
+    "体现未来基础设施的长期价值与文明秩序",
+    "与有效前沿、技术扩散曲线、Logistic Curve 等图形语言同源"
+  ],
+  "one_sentence_summary": "不是怀念旧工业时代，而是赞美未来文明的基础设施。",
+  "manifesto": "把复杂世界压缩成清晰的工程秩序，把未来基础设施升华成诗。"
+}

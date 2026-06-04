@@ -1,0 +1,205 @@
+{
+  "style_name": "Neo Rational Infrastructure",
+  "chinese_name": "新理性基础设施美学",
+  "version": "v2",
+
+  "core_definition": "一种以未来文明基础设施为对象，以信息设计、科学可视化和现代工程秩序为语言的理性乐观主义视觉体系。",
+
+  "one_sentence_summary": "把复杂世界压缩成清晰结构，把未来基础设施升华成信息化的文明图景。",
+
+  "manifesto": "不是怀念旧工业时代，而是赞美未来文明正在运行的基础设施，并让其规律变得可见。",
+
+  "style_formula": "Neo Modernism + Infrastructure Aesthetics + Information Design + Scientific Visualization + Tech Optimism",
+
+  "lineage": [
+    "Modernism",
+    "Bauhaus",
+    "Swiss Information Design",
+    "NASA Technical Illustration",
+    "JAXA Visual Design",
+    "SpaceX Engineering Aesthetics",
+    "Scientific Visualization",
+    "Stripe Design Language",
+    "Apple Information Graphics"
+  ],
+
+  "visual_dna": {
+    "geometry": [
+      "球体",
+      "矩形",
+      "圆柱",
+      "楼梯",
+      "平台",
+      "网格",
+      "工程塔架",
+      "轨道线",
+      "流程图"
+    ],
+
+    "composition": [
+      "非对称平衡",
+      "模块化分区",
+      "工程主体+信息侧栏",
+      "图文并置",
+      "留白与高密度信息共存",
+      "大主体+小图表"
+    ],
+
+    "perspective": "工程图式观察视角",
+
+    "abstraction_level": "高抽象",
+
+    "information_density": "高",
+
+    "narrative_mode": "系统叙事而非人物叙事",
+
+    "subject_isolation": "medium",
+
+    "diagram_ratio": "high",
+
+    "chart_embedding": "native"
+  },
+
+  "color_character": {
+    "brightness": "very_high",
+    "saturation": "medium_high",
+    "contrast": "clean_high",
+    "temperature": "cool_clean",
+
+    "emotional_effect": ["清亮", "透明", "理性", "未来感", "开放", "可信赖"]
+  },
+
+  "color_logic": {
+    "palette_type": "Limited Palette",
+
+    "background_ratio": "60%",
+    "neutral_ratio": "25%",
+    "accent_ratio": "15%",
+
+    "saturation_strategy": "提升天空蓝与信号橙饱和度",
+
+    "visual_goal": "接近2010年代科技企业信息设计风格",
+
+    "avoid": ["低饱和工业灰", "过度复古", "脏旧胶片感", "厚重金属质感"]
+  },
+
+  "palette": {
+    "clean_sky_blue": "#6BB6E8",
+    "future_blue": "#7EC9FF",
+    "architecture_white": "#F8F6F0",
+    "signal_orange": "#FF7A2F",
+    "graphite": "#556270",
+    "light_concrete": "#DDE3E8"
+  },
+
+  "material_language": {
+    "surface": [
+      "白色混凝土",
+      "轻量钢结构",
+      "复合材料外壳",
+      "喷漆金属",
+      "玻璃幕墙"
+    ],
+
+    "aging": ["极轻微使用痕迹"],
+
+    "finish": ["clean", "precise", "maintained"]
+  },
+
+  "subjects": [
+    "雷达站",
+    "卫星地面站",
+    "气象站",
+    "风电场",
+    "数据中心",
+    "输电网络",
+    "火箭发射设施",
+    "科研基地",
+    "自动化港口",
+    "轨道交通控制中心"
+  ],
+
+  "information_design_elements": [
+    "有效前沿",
+    "技术扩散曲线",
+    "帕累托前沿",
+    "系统动力学图",
+    "控制论反馈环",
+    "贝叶斯网络",
+    "流程图",
+    "指标仪表板",
+    "科学插图",
+    "工程剖面图"
+  ],
+
+  "associated_concepts": [
+    "系统工程",
+    "控制论",
+    "复杂系统",
+    "信息可视化",
+    "长期主义",
+    "工业文明",
+    "概率思维",
+    "优化理论",
+    "技术扩散",
+    "文明基础设施"
+  ],
+
+  "visual_keywords": [
+    "Neo Modernism",
+    "Infrastructure Aesthetics",
+    "Information Design",
+    "Scientific Visualization",
+    "Swiss Grid",
+    "Technical Poster",
+    "System Diagram",
+    "Engineering Illustration",
+    "JAXA",
+    "NASA",
+    "SpaceX",
+    "Stripe",
+    "Apple",
+    "Tech Optimism",
+    "Future Civilization"
+  ],
+
+  "emotional_tone": [
+    "理性",
+    "乐观",
+    "探索精神",
+    "秩序感",
+    "开放感",
+    "文明进步",
+    "长期主义"
+  ],
+
+  "design_principles": [
+    "结构优先于装饰",
+    "规律优先于事件",
+    "系统优先于故事",
+    "信息优先于情绪",
+    "可解释性优先于神秘感",
+    "几何优先于写实",
+    "图表与主体同等重要"
+  ],
+
+  "anti_patterns": [
+    "蒸汽朋克",
+    "赛博朋克霓虹",
+    "废土风",
+    "脏旧工业风",
+    "重金属机械崇拜",
+    "末日叙事",
+    "纯概念艺术"
+  ],
+
+  "why_it_resonates_with_me": [
+    "复杂系统被压缩成可理解结构",
+    "体现数学与科学之美",
+    "兼具工程理性与视觉诗意",
+    "符合概率思维与系统思维",
+    "能够表达文明长期积累的价值",
+    "接近有效前沿与技术扩散曲线的图形语言",
+    "将基础设施与信息设计融合"
+  ]
+}
