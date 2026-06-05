@@ -36,6 +36,48 @@ def _inline_format(text: str) -> str:
     return text
 
 
+def _is_pull_quote(raw_lines: list[str], prev_non_empty_line: str = "") -> bool:
+    non_empty = [line.strip() for line in raw_lines if line.strip()]
+    if len(non_empty) != 1:
+        return False
+    plain = re.sub(r"[*_`=#>\[\]\(\)!-]", "", non_empty[0]).strip()
+    if len(plain) <= 28:
+        return True
+    if prev_non_empty_line.rstrip().endswith(("：", ":")) and len(plain) <= 72:
+        return True
+    return False
+
+
+def _render_quote(raw_lines: list[str], prev_non_empty_line: str = "") -> list[str]:
+    quote_text = _inline_format(" ".join(q.strip() for q in raw_lines if q.strip()))
+    if _is_pull_quote(raw_lines, prev_non_empty_line):
+        return [f'<p class="pull-quote">{quote_text}</p>']
+    return ["<blockquote>", f"  <p>{quote_text}</p>", "</blockquote>"]
+
+
+def _flatten_vertical_flow(lines: list[str]) -> str | None:
+    non_empty = [line.strip() for line in lines if line.strip()]
+    if len(non_empty) < 3 or len(non_empty) % 2 == 0:
+        return None
+    arrow_pattern = re.compile(r"^[↓⇣⇩⭣]+$")
+    nodes: list[str] = []
+    for idx, part in enumerate(non_empty):
+        if idx % 2 == 0:
+            nodes.append(part)
+            continue
+        if not arrow_pattern.fullmatch(part):
+            return None
+    return " → ".join(nodes)
+
+
+def _render_code_block(lines: list[str]) -> list[str]:
+    flow_text = _flatten_vertical_flow(lines)
+    if flow_text:
+        return [f"<pre><code>{_escape_html(flow_text)}</code></pre>"]
+    code = _escape_html("\n".join(lines)).strip("\n")
+    return [f"<pre><code>{code}</code></pre>"]
+
+
 def md_to_preview_body(md: str) -> str:
     lines = md.splitlines()
     out: list[str] = []
@@ -46,6 +88,15 @@ def md_to_preview_body(md: str) -> str:
     in_table = False
     table_header: list[str] = []
     table_rows: list[list[str]] = []
+
+    def prev_non_empty_line(before_index: int) -> str:
+        j = before_index - 1
+        while j >= 0:
+            candidate = lines[j].strip()
+            if candidate:
+                return candidate
+            j -= 1
+        return ""
 
     def close_lists():
         nonlocal in_ul, in_ol
@@ -122,20 +173,33 @@ def md_to_preview_body(md: str) -> str:
             i += 1
             continue
 
+        if stripped.startswith("```"):
+            flush_paragraph()
+            close_lists()
+            code_lines: list[str] = []
+            i += 1
+            while i < len(lines):
+                current = lines[i].rstrip("\n")
+                if current.strip().startswith("```"):
+                    i += 1
+                    break
+                code_lines.append(current)
+                i += 1
+            out.extend(_render_code_block(code_lines))
+            continue
+
         if stripped.startswith(">"):
             flush_paragraph()
             close_lists()
             quote_lines: list[str] = []
+            prev_line = prev_non_empty_line(i)
             while i < len(lines):
                 s = lines[i].rstrip("\n").strip()
                 if not s.startswith(">"):
                     break
                 quote_lines.append(s[1:].lstrip())
                 i += 1
-            quote_text = _inline_format(" ".join(q.strip() for q in quote_lines if q.strip()))
-            out.append("<blockquote>")
-            out.append(f"  <p>{quote_text}</p>")
-            out.append("</blockquote>")
+            out.extend(_render_quote(quote_lines, prev_line))
             continue
 
         if stripped.startswith("#"):
@@ -200,4 +264,3 @@ def render_preview(md: str, title: str, skill_md_path: str) -> str:
     body = md_to_preview_body(md)
     safe_title = _inline_format(title)
     return f'{style}\n\n<section class="zihaology-essay">\n  <h1>{safe_title}</h1>\n  {body}\n</section>'
-

@@ -293,6 +293,12 @@ Use this CSS as the default style.
     font-weight: 700;
   }
 
+  .zihaology-essay .pull-quote {
+    margin: 0 0 1.35em;
+    line-height: 2.05;
+    color: var(--banner-blue);
+  }
+
   .zihaology-essay ul,
   .zihaology-essay ol {
     padding-left: 1.3em;
@@ -350,6 +356,7 @@ Use this CSS as the default style.
     font-size: 14px;
     line-height: 1.7;
     margin: 24px 0;
+    white-space: pre;
   }
 
   .zihaology-essay code {

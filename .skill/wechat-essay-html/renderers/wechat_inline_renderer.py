@@ -6,6 +6,7 @@ STYLE = {
     "h3": "font-size:18px;line-height:1.6;font-weight:700;color:#253041;margin:32px 0 14px;",
     "section_blockquote": "margin:46px 0 22px;padding:14px 18px;border-left:5px solid #466a9c;background:#f5f6f8;color:#2f3036;border-radius:8px;",
     "section_p": "margin:0;font-size:21px;line-height:1.5;font-weight:700;color:#2f3036;font-family:'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif;letter-spacing:0.08em;",
+    "pull_quote_p": "margin:0 0 1.6em;line-height:1.85;color:#466a9c;",
     "quote_wrap": "margin:28px 0;border-radius:8px;overflow:hidden;",
     "quote_table": "width:100%;border-collapse:collapse;",
     "quote_bar_td": "width:5px;background:#466a9c;",
@@ -20,6 +21,7 @@ STYLE = {
     "th": "border:1px solid #c2cdde;padding:10px 12px;text-align:left;background:#f5f6f8;color:#2f3036;font-weight:700;",
     "td": "border:1px solid #c2cdde;padding:10px 12px;text-align:left;color:#374151;",
     "hr": "border:none;height:1px;background:#c2cdde;margin:44px 0;",
+    "pre": "background:#f6f8fa;border-radius:10px;padding:16px;overflow-x:auto;font-size:14px;line-height:1.7;margin:24px 0;white-space:pre;font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;color:#1f2937;",
     "code_inline": "background:#f3f4f6;color:#374151;padding:2px 6px;border-radius:5px;font-size:0.92em;font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;",
 }
 
@@ -55,7 +57,26 @@ def _render_section_title(text: str) -> str:
     )
 
 
-def _render_quote(text: str) -> str:
+def _is_pull_quote(raw_lines: list[str], prev_non_empty_line: str = "") -> bool:
+    non_empty = [line.strip() for line in raw_lines if line.strip()]
+    if len(non_empty) != 1:
+        return False
+    plain = re.sub(r"[*_`=#>\[\]\(\)!-]", "", non_empty[0]).strip()
+    if len(plain) <= 28:
+        return True
+    if prev_non_empty_line.rstrip().endswith(("：", ":")) and len(plain) <= 72:
+        return True
+    return False
+
+
+def _render_pull_quote(text: str) -> str:
+    return f'<p style="{STYLE["pull_quote_p"]}">{text}</p>'
+
+
+def _render_quote(raw_lines: list[str], prev_non_empty_line: str = "") -> str:
+    text = _inline_format(" ".join(q.strip() for q in raw_lines if q.strip()))
+    if _is_pull_quote(raw_lines, prev_non_empty_line):
+        return _render_pull_quote(text)
     return (
         f'<section style="{STYLE["quote_wrap"]}">'
         f'<table style="{STYLE["quote_table"]}"><tr>'
@@ -64,6 +85,29 @@ def _render_quote(text: str) -> str:
         f"</tr></table>"
         f"</section>"
     )
+
+
+def _flatten_vertical_flow(lines: list[str]) -> str | None:
+    non_empty = [line.strip() for line in lines if line.strip()]
+    if len(non_empty) < 3 or len(non_empty) % 2 == 0:
+        return None
+    arrow_pattern = re.compile(r"^[↓⇣⇩⭣]+$")
+    nodes: list[str] = []
+    for idx, part in enumerate(non_empty):
+        if idx % 2 == 0:
+            nodes.append(part)
+            continue
+        if not arrow_pattern.fullmatch(part):
+            return None
+    return " → ".join(nodes)
+
+
+def _render_code_block(lines: list[str]) -> str:
+    flow_text = _flatten_vertical_flow(lines)
+    if flow_text:
+        return f'<pre style="{STYLE["pre"]}">{_escape_html(flow_text)}</pre>'
+    code = _escape_html("\n".join(lines)).strip("\n")
+    return f'<pre style="{STYLE["pre"]}">{code}</pre>'
 
 
 def _render_ul_item(text: str) -> str:
@@ -93,6 +137,15 @@ def md_to_wechat_inline_body(md: str) -> str:
     in_table = False
     table_header: list[str] = []
     table_rows: list[list[str]] = []
+
+    def prev_non_empty_line(before_index: int) -> str:
+        j = before_index - 1
+        while j >= 0:
+            candidate = lines[j].strip()
+            if candidate:
+                return candidate
+            j -= 1
+        return ""
 
     def flush_table():
         nonlocal in_table, table_header, table_rows
@@ -158,17 +211,31 @@ def md_to_wechat_inline_body(md: str) -> str:
             i += 1
             continue
 
+        if stripped.startswith("```"):
+            flush_paragraph()
+            code_lines: list[str] = []
+            i += 1
+            while i < len(lines):
+                current = lines[i].rstrip("\n")
+                if current.strip().startswith("```"):
+                    i += 1
+                    break
+                code_lines.append(current)
+                i += 1
+            out.append(_render_code_block(code_lines))
+            continue
+
         if stripped.startswith(">"):
             flush_paragraph()
             quote_lines: list[str] = []
+            prev_line = prev_non_empty_line(i)
             while i < len(lines):
                 s = lines[i].rstrip("\n").strip()
                 if not s.startswith(">"):
                     break
                 quote_lines.append(s[1:].lstrip())
                 i += 1
-            quote_text = _inline_format(" ".join(q.strip() for q in quote_lines if q.strip()))
-            out.append(_render_quote(quote_text))
+            out.append(_render_quote(quote_lines, prev_line))
             continue
 
         if stripped.startswith("#"):
