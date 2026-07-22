@@ -172,6 +172,218 @@ def read_content(args: argparse.Namespace) -> str:
     return ""
 
 
+def normalize_input_content(content: str) -> str:
+    """
+    将 OpenCode 或命令行输入整理为可发送到 Flomo 的正文。
+
+    OpenCode 可能将真实换行传递为字面量：
+        第一段\\n\\n第二段
+
+    本函数将其恢复为：
+        第一段
+
+        第二段
+    """
+    content = content.replace("\r\n", "\n").replace("\r", "\n")
+
+    content = content.replace(r"\r\n", "\n")
+    content = content.replace(r"\n", "\n")
+
+    lines = [line.rstrip() for line in content.splitlines()]
+    content = "\n".join(lines)
+
+    content = re.sub(r"\n{3,}", "\n\n", content)
+
+    return content.strip()
+
+
+def parse_pipe_row(line: str) -> list[str] | None:
+    """解析使用竖线分隔的一行内容。"""
+    stripped = line.strip()
+
+    if "|" not in stripped:
+        return None
+
+    cells = [
+        cell.strip()
+        for cell in stripped.strip("|").split("|")
+    ]
+
+    if len(cells) < 2 or any(not cell for cell in cells):
+        return None
+
+    # 忽略 Markdown 表格的分隔行，例如 --- | ---
+    if all(re.fullmatch(r":?-{3,}:?", cell) for cell in cells):
+        return []
+
+    return cells
+
+
+def convert_pipe_blocks(content: str) -> str:
+    """
+    将连续的竖线分隔内容转换成 Flomo 友好的箭头列表。
+
+    支持竖线行之间存在空行的情况。
+    """
+    lines = content.splitlines()
+    output: list[str] = []
+    index = 0
+
+    while index < len(lines):
+        first_row = parse_pipe_row(lines[index])
+
+        if first_row is None:
+            output.append(lines[index])
+            index += 1
+            continue
+
+        rows: list[list[str]] = []
+        cursor = index
+
+        while cursor < len(lines):
+            line = lines[cursor]
+
+            # 允许表格行之间存在多余空行
+            if not line.strip():
+                cursor += 1
+                continue
+
+            row = parse_pipe_row(line)
+
+            if row is None:
+                break
+
+            if row:
+                rows.append(row)
+
+            cursor += 1
+
+        column_counts = {len(row) for row in rows}
+
+        # 至少包括表头和一行数据，并且列数一致
+        if len(rows) >= 2 and len(column_counts) == 1:
+            headers = rows[0]
+            data_rows = rows[1:]
+
+            output.append(
+                f"映射顺序：**{' → '.join(headers)}**"
+            )
+            output.append("")
+
+            for row in data_rows:
+                first_cell = row[0]
+                remaining_cells = " → ".join(row[1:])
+                output.append(
+                    f"- **{first_cell}** → {remaining_cells}"
+                )
+
+            index = cursor
+            continue
+
+        # 无法可靠识别时保留原内容
+        output.append(lines[index])
+        index += 1
+
+    return "\n".join(output)
+
+
+def format_flomo_content(content: str) -> str:
+    """将原始输入转换成适合 Flomo 阅读的 Markdown。"""
+    content = normalize_input_content(content)
+    content = convert_pipe_blocks(content)
+
+    lines = content.splitlines()
+    output: list[str] = []
+
+    title_added = False
+    in_definition_section = False
+
+    for raw_line in lines:
+        line = raw_line.strip()
+
+        if not line:
+            if output and output[-1] != "":
+                output.append("")
+            continue
+
+        # 第一行作为标题
+        if not title_added:
+            if line.startswith("**") and line.endswith("**"):
+                output.append(line)
+            else:
+                title = line.rstrip("：:")
+                output.append(f"**{title}**")
+
+            title_added = True
+            continue
+
+        # 定义区块标题
+        if line in {
+            "最简洁的定义：",
+            "最简洁的定义:",
+            "最简洁的定义",
+        }:
+            if output and output[-1] != "":
+                output.append("")
+
+            output.append("**最简洁的定义**")
+            output.append("")
+            in_definition_section = True
+            continue
+
+        # 一句话总结
+        summary_match = re.match(
+            r"^一句话总结[：:]\s*(.*)$",
+            line,
+        )
+
+        if summary_match:
+            if output and output[-1] != "":
+                output.append("")
+
+            output.append("**一句话总结**")
+            output.append("")
+
+            summary = summary_match.group(1).strip()
+            if summary:
+                output.append(summary)
+
+            in_definition_section = False
+            continue
+
+        # 定义区块里的"术语：解释"
+        if in_definition_section:
+            definition_match = re.match(
+                r"^([^：:]{1,30})[：:]\s*(.+)$",
+                line,
+            )
+
+            if definition_match:
+                term = definition_match.group(1).strip()
+                description = definition_match.group(2).strip()
+
+                output.append(
+                    f"- **{term}**：{description}"
+                )
+                continue
+
+        output.append(line)
+
+    formatted = "\n".join(output)
+
+    # 连续列表项之间不要保留空行
+    formatted = re.sub(
+        r"(?m)(^- .+)\n\n(?=- )",
+        r"\1\n",
+        formatted,
+    )
+
+    # 最多保留一个空行
+    formatted = re.sub(r"\n{3,}", "\n\n", formatted)
+
+    return formatted.strip()
+
+
 def normalize_tag(tag: str) -> str:
     """把标签转换为 Flomo 可用的 #tag 形式。"""
     tag = tag.strip().lstrip("#").strip()
@@ -359,6 +571,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="仅预览最终内容，不发送",
     )
     parser.add_argument(
+        "--raw",
+        action="store_true",
+        help="仅恢复换行，不执行 Flomo 格式转换",
+    )
+    parser.add_argument(
         "--json",
         action="store_true",
         help="以 JSON 输出执行结果，便于 Agent 解析",
@@ -410,7 +627,12 @@ def main() -> int:
         return 2
 
     try:
-        body = read_content(args)
+        raw_content = read_content(args)
+
+        if args.raw:
+            body = normalize_input_content(raw_content)
+        else:
+            body = format_flomo_content(raw_content)
     except ValueError as exc:
         emit_result(
             ok=False,
